@@ -11,6 +11,14 @@ pool:
 
 steps:
 - task: Maven@3
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise – MPN(82834525-2348-4472-9e60-1927eb73b2ba)'
+    appType: 'webAppLinux'
+    WebAppName: 'ewomakitchen'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'JAVA|11-java11'
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
