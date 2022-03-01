@@ -27,4 +27,10 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    goals: - task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise – MPN(4)(82834525-2348-4472-9e60-1927eb73b2ba)'
+    appType: 'webAppLinux'
+    appName: 'webappserver'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'JAVA|11-java11'package'
